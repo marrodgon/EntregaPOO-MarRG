@@ -5,6 +5,12 @@ public class Autor {
     private String apellidos;
     private boolean premioPlaneta;
 
+    public Autor(String nombre, String apellidos, boolean premioPlaneta){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.premioPlaneta = premioPlaneta;
+    }
+
 
     public String getNombre(){
         return nombre;
@@ -36,7 +42,7 @@ public class Autor {
         return nombre + " " + apellidos;
     }
 
-    public boolean isPremioPlaneta() {
+    public boolean esPremioPlaneta() {
         return premioPlaneta;
     }
 }

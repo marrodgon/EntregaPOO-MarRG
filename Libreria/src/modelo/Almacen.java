@@ -1,7 +1,5 @@
 package modelo;
 
-import com.coti.tools.Esdia;
-
 public class Almacen {
     private Libros[] libros;
     private int librosAñadidos;
@@ -16,7 +14,7 @@ public class Almacen {
         this.paginasPorMinuto = paginasPorMinuto;
     }
 
-    public boolean agregarLibro(Libros libro) {
+    public boolean puedoAñadirLibro(Libros libro) {
         if (librosAñadidos < libros.length) {
             libros[librosAñadidos] = libro;
             librosAñadidos++;
@@ -31,34 +29,35 @@ public class Almacen {
             return;
         }
         
-        String lineaDivisoriaLarga = "|"+"-".repeat(70)+"|";
+        String lineaDivisoriaLarga = "|"+"-".repeat(129)+"|";
         System.out.println(lineaDivisoriaLarga);
-        System.out.println("| Título | Año | Autor | Premio Planeta | Páginas | Tiempo (min) | Precio |");
+        System.out.println("|Título                        |Año |Autor                         |Premio Planeta|Páginas|Tiempo lectura en minutos|Precio       |");
         System.out.println(lineaDivisoriaLarga);
 
         int tiempoTotal = 0;
-        double valorTotal = 0.0;
+        float valorTotal = 0;
 
         for (int i = 0; i < librosAñadidos; i++) {
             Libros libro = libros[i];
-            String premioPlaneta = libro.getAutor().isPremioPlaneta() ? "Sí" : "No";
+            String premioPlaneta = libro.getAutor().esPremioPlaneta() ? "Sí" : "No";
             int tiempoLectura = libro.calcularTiempoLectura(paginasPorMinuto);
             tiempoTotal += tiempoLectura;
             valorTotal += libro.getPrecio();
 
-            System.out.printf("| %s | %d | %s | %s | %d | %d | %.2f € |\n",
+            System.out.printf("|%30s|%4s|%30s|%2s            |%3s    |%3s min                  | %10s €|\n",
                     libro.getTitulo(),
-                    libro.getAñoPublicacion(),
+                    String.valueOf(libro.getAñoPublicacion()),
                     libro.getAutor().getNombreCompleto(),
                     premioPlaneta,
-                    libro.getPaginas(),
+                    String.valueOf(libro.getPaginas()),
                     tiempoLectura,
-                    libro.getPrecio());
+                    String.valueOf(libro.getPrecio()));
         }
 
         System.out.println(lineaDivisoriaLarga);
-        System.out.printf("\n| Tiempo de lectura total: %d min | Valor total: %.2f € |\n", tiempoTotal, valorTotal);
-        System.out.println(lineaDivisoriaLarga);
+        System.out.printf("| Tiempo de lectura total                                                                 |%3s min                  |             |\n", String.valueOf(tiempoTotal));
+        System.out.printf("| Valor total                                                                                                       | %10s €|\n", String.valueOf(valorTotal));
+        System.out.println(lineaDivisoriaLarga+"\n");
     }
 
 }

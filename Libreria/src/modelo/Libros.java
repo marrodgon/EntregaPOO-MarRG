@@ -1,13 +1,19 @@
 package modelo;
 
-import com.coti.tools.Esdia;
-
 public class Libros {
     private String titulo;
     private int añoPublicacion;
     private Autor autor;
     private int paginas;
     private float precio;
+
+    public Libros(String titulo, int añoPublicacion, Autor autor, int paginas, float precio){
+        this.titulo = titulo;
+        this.añoPublicacion =añoPublicacion;
+        this.autor = autor;
+        this.paginas = paginas;
+        this.precio = precio;
+    }
 
     public String getTitulo(){
         return titulo;

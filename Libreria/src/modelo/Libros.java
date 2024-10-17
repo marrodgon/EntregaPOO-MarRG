@@ -7,7 +7,6 @@ public class Libros {
     private int añoPublicacion;
     private Autor autor;
     private int paginas;
-    private int tiempoLecturaMinutos;
     private float precio;
 
     public String getTitulo(){
@@ -26,10 +25,6 @@ public class Libros {
         return paginas;
     }
 
-    public int getTiempoLecturaMinutos(){
-        return tiempoLecturaMinutos;
-    }
-
     public float getPrecio(){
         return precio;
     }
@@ -46,11 +41,13 @@ public class Libros {
         this.paginas = paginas;
     }
 
-    public void setTiempoLecturaMinutos(){
-        this.tiempoLecturaMinutos = Esdia.readInt("Introduzca el tiempo de lectura en minutos del libro: \n");
-    }
-
     public void setPrecio(float precio){
         this.precio = precio;
     }
+
+    
+    public int calcularTiempoLectura(int paginasPorMinuto){
+        return paginas/paginasPorMinuto;
+    }
+
 }

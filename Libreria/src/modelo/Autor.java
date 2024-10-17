@@ -31,4 +31,12 @@ public class Autor {
         this.premioPlaneta = premioPlaneta;
     }
 
+
+    public String getNombreCompleto() {
+        return nombre + " " + apellidos;
+    }
+
+    public boolean isPremioPlaneta() {
+        return premioPlaneta;
+    }
 }

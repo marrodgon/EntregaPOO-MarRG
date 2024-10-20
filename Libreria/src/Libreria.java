@@ -62,9 +62,6 @@ public class Libreria {
     }
 
     private static void setRitmoLectura() {
-        if (almacen == null) {
-            System.out.println("No hay ningún almacen creado.\n");
-        }
         int paginasPorMinuto = Esdia.readInt("Indique cuantas páginas por minuto lee: \n");
         almacen.setPaginasPorMinuto(paginasPorMinuto);
         System.out.println("Ha indicado que usted lee "+paginasPorMinuto+" páginas por minuto.");
@@ -73,22 +70,23 @@ public class Libreria {
     private static void añadirLibro() {
         if (almacen == null) {
             System.out.println("No hay ningún almacen creado.\n");
-        }
-        String titulo = Esdia.readString("Inserte el título del libro que quiere añadir: \n");
-        int añoPublicacion = Esdia.readInt("Inserte el año de publicación: \n");
-        int paginas = Esdia.readInt("Inserte el numero de páginas: \n");
-        float precio = Esdia.readFloat("Inserte el precio: \n");
-        String nombreAutor = Esdia.readString("Inserte el nombre del autor: \n");
-        String apellidosAutor = Esdia.readString("Inserte los apellidos del autor: \n");
-        boolean premioPlaneta = Esdia.siOno("¿Ha ganado el autor algún premio planeta?\n");
-
-        Autor autor = new Autor(nombreAutor, apellidosAutor, premioPlaneta);
-        Libros libro = new Libros(titulo, añoPublicacion, autor, paginas, precio);
-
-        if (almacen.puedoAñadirLibro(libro)) {
-            System.out.println("Libro añadido correctamente.");
         } else {
-            System.err.println("El almacén no tiene espacio para añadir más libros.");
+            String titulo = Esdia.readString("Inserte el título del libro que quiere añadir: \n");
+            int añoPublicacion = Esdia.readInt("Inserte el año de publicación: \n");
+            int paginas = Esdia.readInt("Inserte el numero de páginas: \n");
+            float precio = Esdia.readFloat("Inserte el precio: \n");
+            String nombreAutor = Esdia.readString("Inserte el nombre del autor: \n");
+            String apellidosAutor = Esdia.readString("Inserte los apellidos del autor: \n");
+            boolean premioPlaneta = Esdia.siOno("¿Ha ganado el autor algún premio planeta?\n");
+
+            Autor autor = new Autor(nombreAutor, apellidosAutor, premioPlaneta);
+            Libros libro = new Libros(titulo, añoPublicacion, autor, paginas, precio);
+
+            if (almacen.puedoAñadirLibro(libro)) {
+                System.out.println("Libro añadido correctamente.");
+            } else {
+                System.err.println("El almacén no tiene espacio para añadir más libros.");
+            }
         }
     }
 
